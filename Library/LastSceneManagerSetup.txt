@@ -1,0 +1,9 @@
+sceneSetups:
+- path: Assets/FarmGameScenes/Scene0-Intro.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
+- path: Assets/FarmGameScenes/Scene1-FarmingSim.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
