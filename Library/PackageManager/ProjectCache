@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638948594800000000
+      ticks: 638949495290000000
     m_Hash: 2682485135
   m_LockFileStatus:
     m_FilePath: /Users/philip/Desktop/College/Fall2025/GameProgrammingCS485/GameProgrammingHW5/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638948594800000000
+      ticks: 638949495290000000
     m_Hash: 43247242
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
