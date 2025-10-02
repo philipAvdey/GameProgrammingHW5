@@ -109,7 +109,7 @@ public class FarmTileControl:MonoBehaviour
         Debug.Log("ADayPassed");
         daysPassedSinceLastInteraction++;
         Debug.Log(transform.name.ToString() + " days passed: " + daysPassedSinceLastInteraction.ToString());
-        if (daysPassedSinceLastInteraction >= 2)//3days passed since last farm tile interaction
+        if (daysPassedSinceLastInteraction >= 2)//2days passed since last farm tile interaction
         {
             switch (tileCond)
             {

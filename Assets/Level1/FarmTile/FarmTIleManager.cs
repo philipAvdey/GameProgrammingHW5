@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FarmTIleManager:MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class FarmTIleManager:MonoBehaviour
     public int numFarmTileZ = 4;
     public float gapSizeBetweenTiles = 0.1f;
     
+    public List<FarmTileControl> allFarmTiles = new List<FarmTileControl>();
+
+    
     private void Start()
     {
-        curFarmTileSpawnPos=FarmTileSpawnStartLocation.position;
-        curFarmTileSpawnPos.y = - FarmTile.transform.localScale.y / 2 + 0.05f;//move top of tile close to the ground surface
+        curFarmTileSpawnPos = FarmTileSpawnStartLocation.position;
+        curFarmTileSpawnPos.y = -FarmTile.transform.localScale.y / 2 + 0.05f;//move top of tile close to the ground surface
         int numTileGenerated = 0;
         for (int i = 0; i < numFarmTileZ; i++)
         {
@@ -24,6 +28,10 @@ public class FarmTIleManager:MonoBehaviour
                 numTileGenerated++;
                 curFarmTile.name = "Farm Tile " + numTileGenerated.ToString();
                 curFarmTile.transform.parent = transform;//put all the tiles under the tile manager
+
+                //Store tiles in list needed for win condition check
+                FarmTileControl TileControl = curFarmTile.GetComponent<FarmTileControl>();
+                allFarmTiles.Add(TileControl);
             }
             curFarmTileSpawnPos.z += FarmTile.transform.localScale.z + gapSizeBetweenTiles;
             curFarmTileSpawnPos.x = FarmTileSpawnStartLocation.position.x;
