@@ -37,4 +37,9 @@ public class EnergyManager : MonoBehaviour
             isWatering = true;
         }
     }
+
+    public float GetEnergyAmount()
+    {
+        return energyAmount;
+    }
 }

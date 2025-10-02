@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class PlayerInteractPoint:MonoBehaviour
+public class PlayerInteractPoint : MonoBehaviour
 {
     [SerializeField]
     private GameObject curTile;
@@ -25,13 +25,21 @@ public class PlayerInteractPoint:MonoBehaviour
     private void OnTileInteractPerformed(InputAction.CallbackContext context)
     {
         Debug.Log("Space is pressed");//player press space to interact with the current tile
-        curTile.GetComponent<FarmTileControl>().InteractWithFarmTile();
-        energyManager.StartWatering();
+        if (energyManager.GetEnergyAmount() >= energyManager.energyDepleted)
+        {
+            curTile.GetComponent<FarmTileControl>().InteractWithFarmTile();
+            energyManager.StartWatering();
+        }
+        else
+        {
+            curTile.GetComponent<FarmTileControl>().PlayErrorSound();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag.Contains("Farm Tile"))
+        if (other.gameObject.tag.Contains("Farm Tile"))
         {
             Debug.Log("Player is interacting with Tile " + other.name);
             other.GetComponent<FarmTileControl>().EnterTile();//call the tile object's public API to interact with it
