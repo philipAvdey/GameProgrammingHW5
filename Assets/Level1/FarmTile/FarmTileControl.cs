@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class FarmTileControl : MonoBehaviour
+public class FarmTileControl:MonoBehaviour
 {
     public enum FarmTileCond //used for the switch states
     {
@@ -12,14 +12,13 @@ public class FarmTileControl : MonoBehaviour
 
     //3 materials representing 3 different farm tile conditions
     public Material grassMat, tilledMat, wateredMat;
-    private List<Material> curTileEdgeMaterial = new List<Material>();
+    private List<Material> curTileEdgeMaterial=new List<Material>();
 
     private AudioSource stepTileAudio;
     private AudioSource tillTileAudio;
     private AudioSource waterTileAudio;
-    private AudioSource errorAudio;
 
-    private int daysPassedSinceLastInteraction = 0;
+    private int daysPassedSinceLastInteraction=0;
     [SerializeField]
     private GameObject dayNightControl;
 
@@ -27,7 +26,7 @@ public class FarmTileControl : MonoBehaviour
     {
         tileCond = FarmTileCond.Grass;//start with grass
         GameObject tileEdge;
-
+        
         foreach (Transform edge in transform)
         {
             tileEdge = edge.gameObject;
@@ -37,8 +36,7 @@ public class FarmTileControl : MonoBehaviour
         AudioSource[] audios = gameObject.GetComponents<AudioSource>();
         stepTileAudio = audios[0];
         tillTileAudio = audios[1];
-        waterTileAudio = audios[2];
-        errorAudio = audios[3];
+        waterTileAudio =audios[2];
 
         dayNightControl = GameObject.Find("DayNightController");
         dayNightControl.GetComponent<DayNightControl>().listenToDayPassEvent(this.gameObject);
@@ -63,8 +61,7 @@ public class FarmTileControl : MonoBehaviour
     //API prepared for the player to interact with tiles when steping on it and press the space key
     public void InteractWithFarmTile()
     {
-        switch (tileCond)
-        {
+        switch (tileCond){
             case FarmTileCond.Grass://interact with the grass tile tills it
                 Debug.Log("Player is tilling the tile " + transform.name);
                 tillTileAudio.Play();
@@ -75,7 +72,7 @@ public class FarmTileControl : MonoBehaviour
             case FarmTileCond.Tilled://interact with the tilled land waters it
                 Debug.Log("Player is watering the tile " + transform.name);
                 waterTileAudio.Play();
-                tileCond = FarmTileCond.Watered;
+                tileCond= FarmTileCond.Watered;
                 UpdateTileMaterial();
                 daysPassedSinceLastInteraction = 0;
                 break;
@@ -91,8 +88,8 @@ public class FarmTileControl : MonoBehaviour
     //this tile's material gets brighter to show the current tile that the player is about to interact with
     public void EnterTile()
     {
-        Debug.Log("Player entered tile " + transform.name);
-        foreach (Material mat in curTileEdgeMaterial)
+        Debug.Log("Player entered tile "+transform.name);
+        foreach(Material mat in curTileEdgeMaterial )
             mat.EnableKeyword("_EMISSION");
 
 
@@ -130,8 +127,4 @@ public class FarmTileControl : MonoBehaviour
         }
     }
 
-    public void PlayErrorSound()
-    {
-        errorAudio.Play();
-    }
 }
