@@ -6,9 +6,12 @@ public class PlayerInteractPoint:MonoBehaviour
 {
     [SerializeField]
     private GameObject curTile;
+    [SerializeField]
     private InputAction interactAction;
+    [SerializeField]
+    private EnergyManager energyManager;
 
-    private bool curInteractionTriggered= false;//each space press might trigger multiple times across multiple frames
+    private bool curInteractionTriggered = false;//each space press might trigger multiple times across multiple frames
 
     private void Start()
     {
@@ -23,7 +26,7 @@ public class PlayerInteractPoint:MonoBehaviour
     {
         Debug.Log("Space is pressed");//player press space to interact with the current tile
         curTile.GetComponent<FarmTileControl>().InteractWithFarmTile();
-
+        energyManager.StartWatering();
     }
 
     private void OnTriggerEnter(Collider other)

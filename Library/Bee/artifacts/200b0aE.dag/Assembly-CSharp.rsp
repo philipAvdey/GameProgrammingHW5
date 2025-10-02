@@ -437,6 +437,7 @@
 "Assets/Level1/FarmTile/FarmTIleManager.cs"
 "Assets/Level1/Player/PlayerInteractPoint.cs"
 "Assets/Level1/Player/PlayerMove.cs"
+"Assets/Scripts/EnergyManager.cs"
 "Assets/Scripts/MinimapCameraController.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
